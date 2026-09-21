@@ -20,6 +20,10 @@ columns = [
 for column in columns:
     data[column] = data[column].fillna(data[column].median())
 
+data["subscription"] = data["subscription"].fillna(
+    data["subscription"].mode()[0]
+)
+
 data["subscription"] = data["subscription"].map({
     "Basic": 0,
     "Premium": 1
